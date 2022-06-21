@@ -1,6 +1,6 @@
 const router = require('express')();
 const axios = require('axios');
-
+const fSendEmail = require('../../services/cc.emailSend.js');
 
 router.get('/', async (req, res) => {
     var wOptions = {
@@ -10,9 +10,11 @@ router.get('/', async (req, res) => {
             'Content-Type': 'application/json'
         }
     }
-    await axios(wOptions).then(response => {
-        if (response.status != 200) {
-            
+    await axios(wOptions).then(async (response) => {
+        if (response.status == 200) {
+            await fSendEmail('Servidor Voltou', response.status, response.headers.date, response.statusText);
+        } else {
+            await fSendEmail('Servidor Caiu', response.status, response.headers.date, response.statusText);
         }
     }).catch((error) => {
         res.status(500).json({

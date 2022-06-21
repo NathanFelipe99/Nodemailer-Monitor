@@ -1,8 +1,10 @@
 const app = require('express')();
 const bodyParser = require('body-parser');
 const router = require('./routes/index');
+const dotenv = require('dotenv');
 const debugApp = true;
 
+dotenv.config({ path: './.env.local' });
 app.use(bodyParser.json());
 
 app.use((error, req, res, next) => {
