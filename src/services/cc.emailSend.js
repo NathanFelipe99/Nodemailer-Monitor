@@ -1,11 +1,10 @@
 const nodemailer = require('nodemailer');
 
 async function fSendEmail(pAssunto, pStatus, pHorario, pStatusText) {
-    console.log('env', process.env.SEND_EMAIL_USER);
     const wTransporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.SEND_EMAIL_USER ? process.env.SEND_EMAIL_USER : 'felpsnathan@gmail.com', 
+            user: process.env.SEND_EMAIL_USER,
             pass: process.env.SEND_EMAIL_PASS 
         }
     });

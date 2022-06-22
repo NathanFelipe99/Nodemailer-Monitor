@@ -1,11 +1,11 @@
 const app = require('express')();
 const bodyParser = require('body-parser');
-const router = require('./routes/index');
 const dotenv = require('dotenv');
 const debugApp = true;
-
 dotenv.config({ path: './.env.local' });
 app.use(bodyParser.json());
+
+require('../routes/index');
 
 app.use((error, req, res, next) => {
 
@@ -24,8 +24,6 @@ app.use((error, req, res, next) => {
         obs: "Erro Node.js"
     });
 });
-
-app.use(router);
 
 const PORT = 3030;
 app.listen(process.env.PORT || PORT, () => {

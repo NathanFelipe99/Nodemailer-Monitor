@@ -1,7 +1,7 @@
 const log4js = require("log4js")
 
 log4js.configure({
-    appenders: { express: { type: "file", filename: "./src/logs/logs.json" } },
+    appenders: { express: { type: "file", filename: "./src/logs/express.log" } },
     categories: { default: { appenders: ["express"], level: "error" } },
     levels: {
         express: {
