@@ -32,8 +32,7 @@ async function fSendEmail(pAssunto, pStatus, pHorario, pStatusText) {
             console.log('Email enviado: ' + res);
         }
     });
-
-    console.log('Message sent: %s', wInfo.messageId);
+    
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(wInfo));
 }
 
